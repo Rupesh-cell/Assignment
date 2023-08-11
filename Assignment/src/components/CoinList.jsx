@@ -97,7 +97,7 @@ const CoinList = () => {
               {filteredCoins.map((currency) => (
                 <tr key={currency}>
                   <td>{currency}</td>
-                  <td>{coins[currency].rate}</td>
+                  <td><span dangerouslySetInnerHTML={{__html: coins[currency].symbol}}></span><span>{coins[currency].rate}</span></td>          
                   <td>
                     <button
                       type="button"

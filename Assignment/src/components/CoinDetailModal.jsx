@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
+
 const CoinDetailModal = ({ show, onHide, coinData }) => {
   if (!coinData) {
     return null;
@@ -14,8 +15,9 @@ const CoinDetailModal = ({ show, onHide, coinData }) => {
       </Modal.Header>
       <Modal.Body>
         <p>Currency: {coinData.code}</p>
-        <p>Rate: {coinData.rate}</p>
-        {/* Add other coin data fields as needed */}
+        <div className="cont"><span dangerouslySetInnerHTML={{__html: coinData.symbol}}></span><span >{coinData.rate}</span></div>
+        
+        
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>

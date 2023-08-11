@@ -30,14 +30,18 @@ const BarCharts = () => {
           code: bpis[x]["code"],
           rate: parseFloat(bpis[x]["rate"].replace(",", "")),
           rate_float: parseFloat(bpis[x]["rate_float"]),
+          symbol:bpis[x]["symbol"]
         });
       }
-      console.log(filteredData)
+      console.log(filteredData);
       setData(filteredData);
     } catch (error) {
       console.error(error);
     }
   };
+  const SymbolSetter =() => {
+    
+  }
 
   useEffect(() => {
     fetchPrice();
@@ -48,6 +52,8 @@ const BarCharts = () => {
       clearInterval(interval);
     };
   }, []);
+
+  
 
   return (
     <div className="barr">
