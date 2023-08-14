@@ -13,7 +13,7 @@ const CoinDetailModal = ({ show, onHide, coinData }) => {
         <Modal.Title>Coin Details</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>Currency: {coinData.currency}</p>
+        <p>Currency: {coinData.code}</p>
         <p>Rate: {coinData.rate}</p>
         {/* Add other coin data fields as needed */}
       </Modal.Body>

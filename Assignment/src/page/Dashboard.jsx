@@ -1,22 +1,23 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import BarCharts from "./BarChart";
-import CoinList from "./CoinList";
+import BarCharts from "../components/BarChart";
+import CoinList from "../components/CoinList";
+import '../scss/bar.scss';
+
 
 const Dashboard = () => {
   return (
     <>
       <div className="dashboard">
         <Container>
-          <Row>
-            
-            <Col>
+          <h1>Crypto Dashboard</h1>
+         
             <BarCharts />
-            </Col>
-            <Col>
+            
+            
             <CoinList/>
-            </Col>
-          </Row>
+            
+          
 
         </Container>
       </div>

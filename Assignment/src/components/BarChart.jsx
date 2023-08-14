@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../scss/list.scss";
 import {
   BarChart,
+  ResponsiveContainer,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -21,19 +23,16 @@ const BarCharts = () => {
 
     try {
       const response = await axios.request(options);
-      let bpis =response.data.bpi;
+      let bpis = response.data.bpi;
       let filteredData = [];
       for (const x of Object.keys(bpis)) {
         filteredData.push({
           code: bpis[x]["code"],
           rate: parseFloat(bpis[x]["rate"].replace(",", "")),
-		  
           rate_float: parseFloat(bpis[x]["rate_float"]),
         });
       }
       setData(filteredData);
-
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -47,21 +46,21 @@ const BarCharts = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [data]);
+  }, []);
 
   return (
-    <>
-      <BarChart width={1000} height={600} data={data}>
-        <CartesianGrid strokeDasharray="1 1" />
-        <XAxis dataKey="code" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="rate" fill="#8884d8" />
-        <Bar dataKey="rate_float" fill="#32a852" />
-
-      </BarChart>
-    </>
+    <div className="barr">
+      <ResponsiveContainer width="100%" height={500}>
+        <BarChart data={data} className="chaaart">
+          <CartesianGrid strokeDasharray="1 1" />
+          <XAxis dataKey="code" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="rate" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

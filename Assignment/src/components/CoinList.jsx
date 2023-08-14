@@ -24,6 +24,13 @@ const CoinList = () => {
 
   useEffect(() => {
     fetchPrice();
+
+    // Refresh data every 10 seconds
+    const interval = setInterval(() => {
+      fetchPrice();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleCoinClick = (currency) => {
@@ -57,52 +64,54 @@ const CoinList = () => {
 
   return (
     <>
-      <div className="card p-4 shadow">
-        <h2 className="text-center mb-4">Coin Rates</h2>
-        <Form>
-          <Row className="mb-2">
-            <Col>
-              <FormControl
-                type="text"
-                placeholder="Search..."
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </Col>
-            <Col>
-              <Form.Select value={sortOrder} onChange={handleSortChange}>
-                <option value="asc">Sort Ascending</option>
-                <option value="desc">Sort Descending</option>
-              </Form.Select>
-            </Col>
-          </Row>
-        </Form>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Currency</th>
-              <th>Rate</th>
-              <th>Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredCoins.map((currency) => (
-              <tr key={currency}>
-                <td>{currency}</td>
-                <td>{coins[currency].rate}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => handleCoinClick(currency)}
-                  >
-                    Details
-                  </button>
-                </td>
+      <div className="neeu">
+        <div className="card p-4 shadow">
+          <h2 className="text-center mb-4">Coin Rates</h2>
+          <Form>
+            <Row className="idk">
+              <Col>
+                <FormControl
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={handleSearch}
+                />
+              </Col>
+              <Col>
+                <Form.Select value={sortOrder} onChange={handleSortChange}>
+                  <option value="asc">Sort Ascending</option>
+                  <option value="desc">Sort Descending</option>
+                </Form.Select>
+              </Col>
+            </Row>
+          </Form>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Currency</th>
+                <th>Rate</th>
+                <th>Details</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {filteredCoins.map((currency) => (
+                <tr key={currency}>
+                  <td>{currency}</td>
+                  <td>{coins[currency].rate}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => handleCoinClick(currency)}
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
       </div>
 
       <CoinDetailModal
