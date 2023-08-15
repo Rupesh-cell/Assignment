@@ -32,6 +32,7 @@ const BarCharts = () => {
           rate_float: parseFloat(bpis[x]["rate_float"]),
         });
       }
+      console.log(filteredData)
       setData(filteredData);
     } catch (error) {
       console.error(error);
