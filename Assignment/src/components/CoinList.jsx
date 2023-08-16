@@ -61,7 +61,6 @@ const CoinList = () => {
   const filteredCoins = Object.keys(coins).filter((currency) =>
     currency.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
   return (
     <>
       <div className="neeu">
